@@ -1,6 +1,6 @@
 # HWSwiftLearningNote
 
-本文原发表与[博客](http://frank1ee.github.io/2015/09/13/2015-09-13-hacking-with-swift-xue-xi-bi-ji/)，欢迎访问获得更好的阅读体验。
+本文原发表与[博客](http://frank1ee.github.io/2015/09/13/2015-09-13-hacking-with-swift-xue-xi-bi-ji/)
 
 [Hacking with Swift](https://www.hackingwithswift.com/) 是由 [Paul Hudson](https://twitter.com/twostraws) 发布的 免费 Swift 教程，其涵盖了30个项目，并且包含了 Swift 2.0。因为该教程是面向初学者，所以很多知识点都没有深入探讨，如果想要深入学习可以参考官方文档：[The Swift Programming Language (Swift 2.1)](https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/Swift_Programming_Language/index.html#//apple_ref/doc/uid/TP40014097-CH3-ID0)<!--more-->
 
@@ -12,13 +12,13 @@
 - 变量通过 var 声明，常量通过 let 声明。
 Swift 可以推断变量的类型(type reference)，所以声明变量可以直接如下：
 
- 
+
 		var string = “My string”
 
 //也可以先声明类型（必须）或声明与赋值同时：
 
 		var string:String = “My string”
-  
+
 
 
 - 苹果官方建议在声明有小数部分的变量时都采用 Double，因其具有更高的精准度。
@@ -31,46 +31,46 @@ Swift 可以推断变量的类型(type reference)，所以声明变量可以直�
 
 - “+” 号也可用于 string :
 
- 
+
 		var name1 = "Tim McGraw"
 		var name2 = "Romeo"
 		var both = name1 + " and " + name2 //"Tim McGraw and Romeo"
-  
+
 
 
 - 字符串的对比运算是”case-sensitive”，也就是区分大小写：
 
- 
-		var name = “TIM MCGRAW" 
+
+		var name = “TIM MCGRAW"
 		var name2 =  "TiM mCgRaW"
 		name == name2  //result is false
-  
+
 
 
 - 在 string 中插入变量：
 
- 
+
 		var name = “Tim McGraw”
 		“Your name is \(name)”
 		//可以在括号中运算：
 		var age = 25
 		“His age is \(age * 2)”
-  
+
 
 ## Arrays,Dictionaries,Loops,Switch case
 
 - 通过类型注释（Type annotaions）可以申明数组内容的类型：
 
- 
+
 		var songs: [String] = ["Shake it Off", "You Belong with Me", "Back to December", 3]
 		//以上会报错，因为数组内有非 String 类型的”3”在内。
-  
+
 
 <br />
 
 - 以下代码仅仅是声明了一个将要被分配包含String对象数组的变量：
 
- 
+
 		var array:[String]
 		//没有真正创建数组对象
 
@@ -79,25 +79,25 @@ Swift 可以推断变量的类型(type reference)，所以声明变量可以直�
 
 		var array = [String] ()
 		//效果同上，语法更为简洁。
-  
+
 
 
 - 数组可以直接使用”+”运算符结合：
 
- 
+
 		var songs = ["Shake it Off", "You Belong with Me", "Love Story"]
 		var songs2 = ["Today was a Fairytale", "White Horse", "Fifteen"]
 		var both = songs + songs2
 
 both += [“Everything”]
 //可以增加并赋值
-  
+
 
 <br />
 
 - 创建一个 Disctionary：
- 
- 
+
+
 		var person = [
 				"first": "Taylor",
 				"middle": "Alison",
@@ -105,11 +105,11 @@ both += [“Everything”]
 				"month": "December",
 				"website": "taylorswift.com"
        		     ]
-  
 
-            
+
+
 - Swift 中，条件表达式不需要括号：
- 
+
 			if person == "hater" {
     			action = "hate"
 			} else if person == "player" {
@@ -117,16 +117,16 @@ both += [“Everything”]
 			} else {
     			action = "cruise"
 			}
-  
 
-		
+
+
 - `在 Swift 2.0中，println() 改为 print()`
 
 <br />
 
 		- Swift 的 for 循环语法：
 
- 
+
 		// closed range operator
 		for i in 1...10{
 			println("\(i) x 10 is \(i * 10)")
@@ -144,31 +144,31 @@ both += [“Everything”]
 		println("9 x 10 is \(9 * 10)")
 		println("10 x 10 is \(10 * 10)")
 		*/
-  
 
-		
+
+
 - 不需要「循环数」时也可以用下划线代替：
 
- 
+
 		for _ in 1 ... 5 {
    		 str += " fake"
 		}
-  
+
 
 -  half open range operator(半开区间运算符):"..<"，例如 ..<5 将会循环四次，count 将会是 1,2,3,4。"..<" 可以方便于遍历数组（数组的 index 从0算起）：
 
- 
+
 		for i in 0 ..< count(people) {
     		println("\(people[i]) gonna \(actions[i])")
 		}
-  
+
 
 
 -  遍历数组的语法：
 
- 
+
 ...
-		
+
 		for song in songs {
    		 println("My favorite song is \(song)")
 		}
@@ -179,10 +179,10 @@ both += [“Everything”]
 		for i in 0 ... 3 {
     		println("\(people[i]) gonna \(actions[i])")
 				}
-  
+
 
 <br />
-		
+
 - `获取数组内的对象数量的方法在 Swift 1.2中是 count(array)，在 Swift 2.0中是 array.count。`
 
 <br />
@@ -198,7 +198,7 @@ cases should exhustive），否则 Xcode 可能无法构建应用，default 可�
 
 - 可以在 switch/case 中使用 "..."(half open range operator) 将变量可能的范围作为一个 case：
 
- 
+
 		let studioAlbums = 5
 			switch studioAlbums {
 				case 0...1:
@@ -210,25 +210,25 @@ cases should exhustive），否则 Xcode 可能无法构建应用，default 可�
 				default:
     				println("Have you done something new?")
 				}
-  
+
 
 
 - `Swift 2.0 方法调用和1.2稍有不同，需要写明参数名，目的是提高代码可读性：`
 
- 
+
 		func printAlbumRelease(name: String, year: Int) {
    		 println("\(name) was released in \(year)")
 		}
 		printAlbumRelease("Fearless", year: 2008)
 		printAlbumRelease("Speak Now", year: 2010)
 		printAlbumRelease("Red", year: 2012)
-  
 
-		
+
+
 - "->"符号为方法声明返回值：
- 
-		func albumsIsTaylor(name: String) -> Bool 
-  
+
+		func albumsIsTaylor(name: String) -> Bool
+
 
 
 ## Optionals
@@ -238,29 +238,29 @@ Apple 在 Swift 中为其加入了 Optional，Optional 是一种类型，可以�
 开发中遇到的一些意想不到的问题，例如程序崩溃、影响UI,最常见的原因就是因为使用了为 nil 的值，Optional 这一特性确保了代码安全性。
 
 - 定义一个 Optional 的值只需在类型后添加一个问号“?”：
- 
- 
+
+
 		var str: String? //输出nil
-		
+
 		//以上是一个名为 str 的 Optional String.
-  
+
 
 - Optional 类型无法直接使用，需要拆包(unwrap)后取出原类型的值后使用。在 Optional 类型后加上感叹号(!)进行显式拆包（Force unwrapping optionals）：
-		
- 
+
+
 		var str: String? = "Hallo World"
-		
+
 		str  //nil
 		str!  //"Hallo World"
-		
+
 		print(str) //输出"Optional("Hallo World")"
 		print(str!) //输出"Hallo World"
-  
+
 
 
 - 通过 if let 语句可以判断 Optional 是否有值，如果有，将其拆包赋值给一个本地变量：
 
- 
+
 		func getHaterStatus(weather: String) -> String? {
     		if weather == "sunny" {
       		  return nil
@@ -279,21 +279,21 @@ Apple 在 Swift 中为其加入了 Optional，Optional 是一种类型，可以�
 
 		if let status = getHaterStatus("rainy") {
  		   takeHaterAction(status)
-    		
+
 /* if let 语句将调用了 getHaterStatus 方法后得到的 Optional 值拆包后赋值给本地变量 status，确保 takeHaterAction 方法传入的是一个有值的参数。 */
-} 
-  
+}
+
 
 <br />
 
 - Optional 还提供了隐式拆包（implicitly unwrapped optionals），隐式拆包的 Optional 在使用前无需拆包。要使用隐式拆包需要在变量声明时的数据类型后加上感叹号(!)：
 
- 
+
 		var str: String! = "Hello World!"
 		str //Hello World!
-  
 
-		
+
+
 使用隐式拆包需要小心，要确保变量已被正确初始化。一般会在以下情况遇到 Implicitly unwrapped：
 
 1. 当使用 Apple 的 API 时会经常碰到隐式拆包的返回值。
@@ -317,8 +317,8 @@ Apple 在 Swift 中为其加入了 Optional，Optional 是一种类型，可以�
 
 - Optional Chaining：
 在 Objective-C 中，对 nil 发送消息会得到 nil，但是在 Swift 中不允许这么做。当对一个 Optional 类型的对象发送消息时，通过 Optional Chaining 可以对其判断是否有值，如果是则发送消息，反之则什么也不做：
-		
- 
+
+
 		func albumReleasedYear(year: Int) -> String? {
 		    switch year {
 		    case 2006: return "Taylor Swift"
@@ -334,20 +334,20 @@ Apple 在 Swift 中为其加入了 Optional，Optional 是一种类型，可以�
 		//即问号(?)前有值才发送消息，这就是 Optional Chaining
 
 Optional Chaining 如同其名可以像链条一样连接，多长都可以，Swift 会从左至右检查直至发现 nil 即终止：
-		
+
 		let album = albumReleasedYear(2006)?.someOptionalValue?.someOtherOptionalValue?.whatever
-  
+
 
 <br />
 
 - The nil coalescing operator：
 Swift 的这个特性可以让你的代码更加简单和安全。例如：当 Value A 有值时则使用 Value A，如果 Value A 无值，则使用 Value B，这对 Optional 十分有用：
 
- 
+
 		let album = albumReleasedYear(2006) ?? "unknown"
 		print("The album is \(album)")
 		//如果 albumReleasedYear(2006)返回的 Optional 无值，则使用非 Optional "unknown".
-  
+
 
 <br />
 
@@ -355,15 +355,15 @@ Swift 的这个特性可以让你的代码更加简单和安全。例如：当 V
 <br />
 - 枚举（Enum）可以将一系列相关的值定义为一个组类型，通过如下语法创建 enum：
 
- 
+
 		enum WeatherType {
 			case Sun, Cloud, Rain, Wind, Snow
 		}
-  
-	
+
+
 下面看看如何使用枚举类型：
 
- 
+
 		func getHaterStatus(weather: WeatherType) -> String? {
  		   if weather == WeatherType.Sun {
 		        return nil
@@ -373,11 +373,11 @@ Swift 的这个特性可以让你的代码更加简单和安全。例如：当 V
 		}
 
 		getHaterStatus(WeatherType.Cloud)
-  
+
 
 也可以这么定义枚举：
 
- 
+
 		enum WeatherType {
 		    case Sun
 		    case Cloud
@@ -385,11 +385,11 @@ Swift 的这个特性可以让你的代码更加简单和安全。例如：当 V
 		    case Wind
 		    case Snow
 		}
-  
+
 
 也可以这么使用枚举：
 
- 
+
 		func getHaterStatus(weather: WeatherType) -> String? {
 		    if weather == .Sun {
 		        return nil
@@ -400,13 +400,13 @@ Swift 的这个特性可以让你的代码更加简单和安全。例如：当 V
 	//Swift 通过 Type inference 知道你与 WeatherType 类型比较，所以无需写明枚举类型，但是这种写法 Swift 将不会提供代码补足建议辅助
 
 		getHaterStatus(.Cloud)
-  
+
 
 <br />
 
 枚举在 switch/case 中十分有用，因为 Swfit 知道你的枚举类型中都都有什么值，所以能确保你涵盖了所有的 case：
 
- 
+
 		func getHaterStatus(weather: WeatherType) -> String? {
 		    switch weather {
 		    case .Sun:
@@ -418,11 +418,11 @@ Swift 的这个特性可以让你的代码更加简单和安全。例如：当 V
 		    }
     //这段代码不会成功编译，应该添加 case .Snow 或是 default case。
 }
-  
+
 
 对于 Enum，Swift 还有一个非常强大的特性：可以为组中的值再附加一个值，进一步细分：
 
- 
+
 		enum WeatherType {
 		    case Sun
 		    case Cloud
@@ -430,11 +430,11 @@ Swift 的这个特性可以让你的代码更加简单和安全。例如：当 V
 		    case Wind(speed: Int)
 		    case Snow
 		}
-  
+
 
 如此，使用 switch/case 时就有了额外的条件，当条件都满足时 case 才会匹配：
 
- 
+
 		func getHaterStatus(weather: WeatherType) -> String? {
    		 switch weather {
 		    case .Sun:
@@ -449,7 +449,7 @@ Swift 的这个特性可以让你的代码更加简单和安全。例如：当 V
 		}
 
 		getHaterStatus(WeatherType.Wind(speed: 5))
-  
+
 
 代码段第五行的 let 关键字的用途是声明一个能引用的常量名保存传入的参数，通过 Where 关键字来声明条件。
 
@@ -458,30 +458,30 @@ Swift 从上至下判断 switch/case 语句，所以请注意 case 的排序。
 ## Structs
 Structs（结构体） 是一种复杂数据类型，包含了多个值，通过 struct 关键字定义一个结构体：
 
- 
+
 		struct Person {
 		    var clothes: String
 		    var shoes: String
 		}
-  
+
 
 Swift 让你非常简单地创建一个结构体变量，只需要将初始值传入即可：
 
- 
+
 		let taylor = Person(clothes: "T-shirt", shoes: "sneakers")
 		let other = Person(clothes: "short skirts, shoes: "high heels")
-  
+
 
 通过结构体变量名以及属性名来访问属性的值：
 
- 
+
 		print(taylor.clothes)
 		print(other.shoes)
-  
+
 
 Swift 有一个名为"copy on write"的机制，当你将一个结构体变量赋给另一个变量时，会独立拷贝一份：
 
- 
+
 		struct Person {
  		   var clothes: String
 		    var shoes: String
@@ -495,17 +495,17 @@ Swift 有一个名为"copy on write"的机制，当你将一个结构体变量�
 
 		taylor       //(clothes: "short skirts", shoes: "high heels")
 		taylorCopy   //(clothes: "short skirts", shoes: "flip flops")
-  
+
 
 ## Classes
 通过 class 关键字定义一个类：
 
- 
+
 		class Person {
    		 var clothes: String
  		   var shoes: String
 		}
-  
+
 
 但是上面有个问题，Swift 不允许创建未被正确初始化的变量。解决方法有三种：
 
@@ -515,7 +515,7 @@ Swift 有一个名为"copy on write"的机制，当你将一个结构体变量�
 
 通过创建一个 init() 方法来实现自定义初始化方法：
 
- 
+
 		class Person {
   		  var clothes: String
 		    var shoes: String
@@ -526,21 +526,21 @@ Swift 有一个名为"copy on write"的机制，当你将一个结构体变量�
 		        //init方法不需要添加 func 关键字
 		    }
 		}
-  
+
 
 实例化一个类：
 
- 
+
 		var taylor = Person(name: "Taylor", age: 25)
-  
+
 
 继承一个类：
 
- 
+
 		class Singer: Person {
 
 		}
-  
+
 
 在 Swift 中，想要在继承类（子类）中覆盖父类的方法，需要使用 override 关键字：
 
@@ -552,16 +552,16 @@ Swift 有一个名为"copy on write"的机制，当你将一个结构体变量�
 
 通过 super 关键字调用父类方法：
 
- 
+
  		   init(name: String, age: Int, noiseLevel: Int) {
 		        self.noiseLevel = noiseLevel
 		        super.init(name: name, age: age)
 		    }
-  
+
 
 - 在 Swift 中，类和结构体有点相似，都可以拥有属性和方法，区别在于结构体是值拷贝，这意味着改变拷贝值不会改变原来的值，而类是指针拷贝，拷贝的变量会指向相同的实例，见下例：
 
- 
+
 		// Value type example
 		struct S { var data: Int = -1 }
 		var a = S()
@@ -575,20 +575,20 @@ Swift 有一个名为"copy on write"的机制，当你将一个结构体变量�
 		var y = x                        // x is copied to y
 		x.data = 42                        // changes the instance referred to by x (and y)
 		println("\(x.data), \(y.data)")    // prints "42, 42"
-  
+
 
 
 ## Properties
 结构体和类（统称为 types）可以拥有自己的变量和常量（统称为 properties）。types 也可拥有方法来处理 properties：
 
- 
+
 		struct Person {
 		   var clothes: String
 		   var shoes: String
-	
+
 		   func describe() {
 				print("I like wearing \(clothes) with \(shoes)")
-			} 
+			}
 		}
 
 		let taylor = Person(clothes: "T-shirts", shoes: "sneakers")
@@ -596,16 +596,16 @@ Swift 有一个名为"copy on write"的机制，当你将一个结构体变量�
 		taylor.describe() //"I like wearing T-shirts with sneakers"
 		other.describe() //"I like wearing short skirts with high heels"
 		//调用方法时，不同的对象使用相应的值
-  
+
 
 
 ### Property observers
 Swift 提供了两个观察者方法，willSet 和 didSet，分别会在属性的值将要改变以及改变后触发（常用于用户界面的更新）：
 
- 
+
 		struct Person {
 		    var clothes: String {
-		        willSet { 
+		        willSet {
 		            updateUI("I'm changing from \(clothes) to \(newValue)")
 		        }
 		        didSet {
@@ -620,12 +620,12 @@ Swift 提供了两个观察者方法，willSet 和 didSet，分别会在属性�
 
 		var taylor = Person(clothes: "T-shirts")
 		taylor.clothes = "short skirts" //值改变，将会调用观察者方法
-  
+
 
 ### Computed properties
 Computed properties 其实就是自己重写属性的 get/set 方法：
 
- 
+
 		struct Person {
 		   var age: Int
 
@@ -638,12 +638,12 @@ Computed properties 其实就是自己重写属性的 get/set 方法：
 
 		var fan = Person(age: 25)
 		print(fan.ageInDogYears) //输出：25 * 7
-  
+
 
 ### Static properties and methods
 静态属性和方法属于 type（class\struct），而不属于类的实例，这可以更好的组织一个共享的储存数据。通过 static 关键字声明一个静态变量：
 
- 
+
 		struct TaylorFan {
  		   static var favoriteSong = "Shake it Off"
 
@@ -654,7 +654,7 @@ Computed properties 其实就是自己重写属性的 get/set 方法：
 		let fan = TaylorFan(name: "James", age: 25)
 		print(TaylorFan.favoriteSong)
 		//每个 TaylorFan 类型的对象都会有自己的名字和年龄，但他们都有共同喜欢的歌曲："Shake it Off"
-  
+
 
 <br />
 
@@ -670,11 +670,11 @@ Computed properties 其实就是自己重写属性的 get/set 方法：
 大多数时候你不必明确访问级别，但有些时候你会需要将一个属性设为`private`，使其无法被其他人直接访问。
 这样声明一个 private 的属性：
 
- 
+
 		class TaylorFan {
  		   private var name: String!
 		}
-  
+
 
 注意：Playground 不受 Access control 的限制，因为它可以无碍地访问文件因此它可以读写任何数据。
 
@@ -682,7 +682,7 @@ Computed properties 其实就是自己重写属性的 get/set 方法：
 
 Polymorphism 译为多态，指的是在类的继承中，子类会继承父类的属性、方法，多态即指子类可以拥有父类或自身定义的两种行为，你可以为其选择：
 
- 
+
 		class Album {
 		   var name: String
 
@@ -708,11 +708,11 @@ Polymorphism 译为多态，指的是在类的继承中，子类会继承父类�
 		        super.init(name: name)    //子类调用父类方法，实现父类的行为
 		    }
 		}
-  
+
 
 当子类想要实现自己的行为时，可以通过 `override`关键字 重写 父类方法，如此将会实现子类自己定义的方法行为：
 
- 
+
 		class LiveAlbum: Album {
   		  var location: String
 
@@ -725,33 +725,33 @@ Polymorphism 译为多态，指的是在类的继承中，子类会继承父类�
     		    return "The live album \(name) sold lots"
 		    }
 		}
-  
+
 
 总而言之，一个对象可以同时实现自己类的行为和其父类的行为，这称为「多态」。
 
 ### Converting types with type casting
 这种情况时有发生：你有一个明确声明的对象，但你知道它其实是另一种类型（比如上面的继承类StudioAlbum 和 LiveAlbum 被当做 Album 保存在数组中，因为它们继承于 Album 所以是允许的），当需要调用方法时，Swift 可能不知道它的真实类型而无法编译，解决办法是 type casting，即类型转换，可以将一个对象的类型转为另一种类型：
 
- 
+
 		for album in allAlbums {
   		  print(album.getPerformance())
 		} //根据上面代码块的内容
-  
+
 
 `allAlbums` 数组拥有三个类型为 `Album` 的对象，但是其中两个我们知道是 `StudioAlbum` 和 `LiveAlbum`，但是 Swift 却不知道，如果你想执行 `print(album.studio)` 则无法编译，因为只有 `StudioAlbum`拥有那个属性。
 
 Type casting 有三种形式，但常见的只有两种：`as?` 和 `as!`，分别是可选向下转型以及强制向下转型，前者会返回一个转型后的可选值（optional value），若转型失败会返回nil；当你确定可以转型成功时使用后者，如果转型失败可能导致应用崩溃：
 *P.S.「转型」并不是指真的改变实例或它的值，而只是告诉 Swift 把这个对象看做某个类的实例。*
 
- 
+
 		for album in allAlbums {
   		  let studioAlbum = album as? StudioAlbum
-		} 
-  
+		}
+
 
 studioAlbum 变量将会拥有一个StudioAlbum？类型数据或是nil，这经常与`if let`配合使用来自动解包 optional 值：
 
- 
+
 		for album in allAlbums {
    		print(album.getPerformance())
 
@@ -761,7 +761,7 @@ studioAlbum 变量将会拥有一个StudioAlbum？类型数据或是nil，这经
     		    print(liveAlbum.location)
 		   }
 		}
-  
+
 
 遍历 allAlums 数组内的对象，并判断它们是否为特定子类，如果是，调用子类的方法/属性。
 
@@ -829,4 +829,4 @@ UIView 的 animateWithDuration 方法要求传入一个内含动画内容的闭�
 
 拓展阅读：[The new feature of Swift 2.0 by example](https://www.hackingwithswift.com/new-features-swift-2)
 
-*本文根据自己的理解写下的学习笔记，由于英语和技术水平有限，一定会有不少错误和纰漏，请以原文和官方文档为准，如果能在评论中指出错误则感激不尽。*
+*本文根据自己理解所写下的学习笔记，由于英语和技术水平有限，一定会有不少错误和纰漏，请以原文和官方文档为准，如能在评论中指出错误则感激不尽。*
